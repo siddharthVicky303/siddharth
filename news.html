@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Ticker - Pause On Hover</title>
+  <style>
+     
+    
+    .news-ticker-container {
+      width: 80%;
+      max-width: 450px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background-color: white;
+      cursor: default;
+    }
+    
+    .news-ticker-header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      border-bottom: 3px solid #e74c3c;
+    }
+    
+    .news-ticker {
+      position: relative;
+      height: calc(100% - 53px);
+      overflow: hidden;
+    }
+    
+    .news-item {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      background-color: white;
+      transition: transform 1s ease, opacity 1s ease;
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+      opacity: 0;
+    }
+    
+    .news-item h3 {
+      margin-top: 0;
+      color: #34495e;
+    }
+    
+    .news-item p {
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    
+    .news-item .date {
+      font-size: 0.8em;
+      color: #95a5a6;
+      text-align: right;
+      font-style: italic;
+    }
+    
+    .controls {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    button {
+      padding: 3px 5px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5 3 5 8px;
+      margin-top: -5%;
+      margin-left: -7%;
+      
+       transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .paused .news-item {
+      transition: none;
+    }
+
+    /* Status indicator */
+    .status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .status.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="news-ticker-container" id="tickerContainer">
+    <div class="news-ticker-header">STUDENT'S CORNER - LATEST NEWS</div>
+    <div class="status" id="statusIndicator">Paused</div>
+    <div class="news-ticker" id="newsTicker">
+
+      
+      <div class="news-item">
+         <p>Hariom Arora received the Second Best Award for his paper presentation at an international conference, organized by the Indian Institute of Foreign Trade from . Image</p>
+        <div class="date"> 12-13 December 2024</div>
+        <p>Vandana Govindani presented a paper titled "Digital Diaspora: Navigating Sindhi Cultural Preservation in the Age of New Media" at the SHSS Research Symposium IIT Indore. </p>
+        <p>Guru Dayal Kumar presented a paper at SHSS Research Symposium 2024, Indian Institute of Technology, </p>
+        <div class="date"> 29th-30th April, 2024</div>
+      </div>
+      <div class="news-item">
+         <p>Meghna presented a paper “Mapping the Global Landscape: Trends, Determinants and Regional Dynamics of Female Labor Force Participation”, SHSS Research Symposium 2024, IIT, Indore Image</p>
+         <p>Meghna presented paper at the 64th Annual Conference of the Indian Society of Labour Economics, University of Hyderabad, </p>
+        <div class="date">30th March 2024.</div>
+        <p>Vijay Kumar presented a paper at the 64th The Indian Society of Labour Economics Annual Conference organized by the School of Economics, University of Hyderabad, 29-31st March 2024 Image</p>
+        <div class="date"> 12-13th February</div>
+       </div>
+      <div class="news-item">
+        <p>Vijay Kumar presented a paper at the XXVIII IIPS National Seminar 2024 organized by Department of Statistics, Institute of Science, Banaras Hindu University during Image</p>
+         <div class="date">12-13th February </div>
+         <p>Sumit Kumar presented a paper at the 58th Annual Conference of The Indian Econometric Society (TIES) organized by Tripura Central University during Image</p>
+         <div class="date">February 22-24th, 2024</div>
+        <p>Sumit kumar participated in the two-day workshop on “Building Evidence-Based Policies: Economic Evaluation and Systematic Review” organized by HTAIn Resource Centre at IIT Delhi. Image</p>
+      </div>
+      
+      <div class="news-item">
+         <p>Pawan Singh presented a paper at National seminar on "Development Paradigm in India: A Study of Poverty, Inequality and Discrimination" , held at BHU</p>
+        <div class="date">22nd – 23rd March, 2024</div>
+        <p>Harish Sahu presented a paper at "International WASH conference- 8th Edition- Kolkata by the Ministry of Water Resources on 19th September 2024.</p>
+        <p>Harish Sahu presented a paper at IAH2024 World Groundwater Congress, Davos, Switzerland held from 8th sept to 13th September, 2024.</p>
+      </div>
+      <div class="news-item">
+        <p>Dibya Prakash Pandab, has been awarded the prestigious PROF. VENNELAKANTI PRAKASAM Award-2024 for the best research paper on Systematic Functional Linguistics. Image</p>
+        <p>Jyothi J. won the IIT Indore Best Research Paper Award in SHSS 2024 for “Digital Cartography and Feminist Geocriticism: A Case Study of Marichjhapi Massacre”.</p>
+        <p>Sonal Pandey attended the Comics Conclave 2.0 on March 16-17, 2024, hosted by Art@IITGN and the Curiosity Lab of IIT Gandhinagar.</p>
+      </div>
+     <div class="news-item">
+      <p>Vandana Govindani got an opportunity to work as a main researcher for the Sindhi Partition Gallery (Museum), the Lost Homeland of Sindh with CAMP.</p>
+      <p>Kaviarasu P. won the best paper title for his presentation on "A Bibliometric Analysis of Research Trends on Translation Studies in India" at the SHSS Research Symposium 2024.</p>
+     <p>Jyothi Justin presented paper "Digital Cartography and Feminist Geocriticism: A Case Study of Marichjhapi Massacre"at UNED-LINHD i Conference as part of CLS INFRA Fellowship.</p>
+    </div>
+   <div class="news-item">
+    <p>Mr. Hariom Arora visited the University of Gothenburg, Sweden, and presented his doctoral work at the International Schumpeter Society Conference (ISS) 2024. ISS 2024</p>
+    <p>Jitamitra Behera has been awarded the Bi-nationally Supervised Doctoral Degree/Cotutelle 2024/25 research grant by the DAAD German Academic Exchange Service. Jitamitra fellowship</p>
+    <p>Mr. Manivendra Kumar, a Ph.D. student has been awarded the Charles Wallace India Scholarship. He will be working on ‘Changing Paradigms of Reform (1950 to 1990)</p>
+  </div>
+ <div class="news-item">
+  <p>Ms Monika got selected for Harvard Project for Asian and International Relations organizing by Harvard University from 9-11 February 2024 with partially funded scholarship. Conference Link Acceptance Letter </p>
+  <p>Ms Monika attended 21st Harvard India Conference theme "India's Rising" jointly organized by Harvard Business School & Kennedy School of Harvard University on 17-18 Feb 2024. Conference Link Image</p>
+  <p>Ms Monika delivered a lecture on 17 November 2023, titled "The Story of Indian Civilization" to undergraduate students during her research visit to Boston University USA. University Page Lecture Image</p>
+ </div>
+<div class="news-item">
+  <p>Vandana Govindani received the 'Sahitya Akademi Travel Grant', she visited various Sindhi writers and scholars across the state of Gujarat. </p>
+  <p>Nihal Singh Khangar presented a paper at the 8th Asian Conference on Environment and Sustainable Development (ACESD) in Sapporo, Japan from </p>
+  <div class="date">November 3 to 5, 2023.</div>
+  <p>Ms. Sadaf Khan received the Best Paper Presentation Award in the Research Scholars Category for presenting our paper on Impact of Medium of Instruction on Professional Trajectories Conference</p>
+ </div>
+<div class="news-item">
+  <p>Bittu Mandal presented a paper on "Migration & Health" at the Population Association of Singapore 2023 Annual Meeting held at the National University of Singapore. Conference </p>
+  <p>Mahima Singh presented a paper at the 27th European Conference for South Asian Studies, held at the University of Turin, Italy. link</p>
+  <p>Tinto D. attended an International Summer School (fully-funded), organised by Greek Studies on Site in Athens, Greece   link Image</p>
+  <div class="date">from June 26 to July 25, 2022. </div>
+ </div>
+<div class="news-item">
+  <p>Jyothi Justin attended "Summer School for Literary Studies & Digital Humanities" by Leiden University and KU Leuven held .</p>
+ <div class="date">from 20-23 June 2022 (online).</div>
+ <p>Kavitha K. presented a paper at the RC14 International conference entitled “Gender and Media: Representations, discourses and Practices”, in Melbourne, Australia, (Online).</p>
+ <p>	Kavitha K. presented the paper titled, “First-generation Indian Digital Humanities Scholar and Minimal Computing” at the DHSI Conference, University of Victoria, Canada,(online).</p>
+</div>
+<div class="news-item">
+  <p>Ms. Monika got the "Supervisor Service Fellowship" and appointed as a Visiting PhD Student at Dept of Sociology, Boston University USA for One year. </p>
+ <div class="date">from 1 Oct 2023-30 Sept 2024.</div>
+ <p>Ms. Jyothi Justin received Computational Literary Studies (CLS) INFRA Transnational Access Fellowship (TNA) FELLOWSHIP funded by EU at UNED, Madrid, Spain for 9 weeks. Fellowship Announcement Details</p>
+ <p>Mr. Manivendra Kumar, Ms. Meghna Gangadharan and Mr. Shyam Sunder Pal attended the webinar titled 'Mapping Digital Humanities' Read More</p>
+</div>
+<div class="news-item">
+  <p> Ms. Kavitha K attended the Webinar on "The Left Reflects on the Global Pandemic: Gayatri Chakravorty Spivak" held . Read More</p>
+ <div class="date">on May 07, 2020</div>
+ <p>Mr. Kaviarasu P and Ms.Justy Joseph were the Participant for the event at Winter Institute of digital Humanities - An International School. Read More</p>
+ <p>Ms. Muhsina K K was Participant in the workshop on 'Contemporary Indian Cinemas   Read More</p>
+ <div class="date">during 28-29 February 2020</div>
+</div>
+  
+ 
+       
+    </div>
+  </div>
+  <div style="margin-left: -40%;">
+  <div class="controls">
+    <button id="pauseBtn">Pause</button>
+    <button id="resumeBtn">Resume</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+</div>
+  <script>
+    const newsTicker = document.getElementById('newsTicker');
+    const tickerContainer = document.getElementById('tickerContainer');
+    const newsItems = document.querySelectorAll('.news-item');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const resumeBtn = document.getElementById('resumeBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const statusIndicator = document.getElementById('statusIndicator');
+    
+    let currentIndex = 0;
+    let newsInterval;
+    let isPaused = false;
+    let mouseMovementTimeout;
+    
+    // Set initial positions
+    function initializePositions() {
+      const itemHeight = newsItems[0].offsetHeight;
+      
+      newsItems.forEach((item, index) => {
+        item.style.transform = `translateY(${itemHeight * (index + 1)}px)`;
+        item.style.opacity = '0';
+      });
+    }
+    
+    // Show a specific news item
+    function showNewsItem(index) {
+      const itemHeight = newsItems[0].offsetHeight;
+      
+      newsItems.forEach((item, i) => {
+        if (i === index) {
+          // Current item - move into view
+          item.style.transform = 'translateY(0)';
+          item.style.opacity = '1';
+        } else if (i === (index - 1 + newsItems.length) % newsItems.length) {
+          // Previous item - move above
+          item.style.transform = `translateY(-${itemHeight}px)`;
+          item.style.opacity = '0';
+        } else {
+          // Future items - keep below
+          item.style.transform = `translateY(${itemHeight}px)`;
+          item.style.opacity = '0';
+        }
+      });
+    }
+    
+    // Pause the ticker
+    function pauseTicker() {
+      isPaused = true;
+      newsTicker.classList.add('paused');
+      statusIndicator.classList.add('visible');
+    }
+    
+    // Resume the ticker
+    function resumeTicker() {
+      isPaused = false;
+      newsTicker.classList.remove('paused');
+      statusIndicator.classList.remove('visible');
+    }
+    
+    // Start the news ticker
+    function startNewsTicker() {
+      initializePositions();
+      showNewsItem(currentIndex);
+      
+      newsInterval = setInterval(() => {
+        if (!isPaused) {
+          currentIndex = (currentIndex + 1) % newsItems.length;
+          showNewsItem(currentIndex);
+        }
+      }, 4000); // Change news item every 4 seconds
+    }
+    
+    // Pause when mouse moves over the ticker
+    tickerContainer.addEventListener('mousemove', () => {
+      if (!isPaused) {
+        pauseTicker();
+      }
+      
+      // Clear any existing timeout
+      clearTimeout(mouseMovementTimeout);
+      
+      // Set a new timeout to resume after 2 seconds of no movement
+      mouseMovementTimeout = setTimeout(() => {
+        if (isPaused) {
+          resumeTicker();
+        }
+      }, 2000);
+    });
+    
+    // Resume when mouse leaves the ticker
+    tickerContainer.addEventListener('mouseleave', () => {
+      clearTimeout(mouseMovementTimeout);
+      if (isPaused) {
+        resumeTicker();
+      }
+    });
+    
+    // Button controls
+    pauseBtn.addEventListener('click', () => {
+      clearTimeout(mouseMovementTimeout);
+      pauseTicker();
+    });
+    
+    resumeBtn.addEventListener('click', () => {
+      clearTimeout(mouseMovementTimeout);
+      resumeTicker();
+    });
+    
+    resetBtn.addEventListener('click', () => {
+      clearInterval(newsInterval);
+      clearTimeout(mouseMovementTimeout);
+      currentIndex = 0;
+      isPaused = false;
+      newsTicker.classList.remove('paused');
+      statusIndicator.classList.remove('visible');
+      startNewsTicker();
+    });
+    
+    // Start the ticker when the page loads
+    window.addEventListener('load', startNewsTicker);
+  </script>
+</body>
+</html>
